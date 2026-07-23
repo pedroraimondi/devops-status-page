@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Página educacional de status dos serviços da Nimbus Tecnologia."
+    >
+    <title>Status dos Serviços | Nimbus Tecnologia</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="index.html" aria-label="Nimbus Tecnologia — página inicial">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span>
+            <strong>Nimbus</strong>
+            <small>Tecnologia</small>
+          </span>
+        </a>
+        <span class="environment">
+          <span class="environment-dot" aria-hidden="true"></span>
+          Ambiente de produção
+        </span>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Central de transparência</p>
+          <div class="hero-heading">
+            <div>
+              <h1>Status dos Serviços</h1>
+              <p class="hero-description">
+                Acompanhe em tempo real a disponibilidade dos produtos e da infraestrutura
+                da Nimbus Tecnologia.
+              </p>
+            </div>
+            <div class="last-update">
+              <span>Última atualização</span>
+              <time id="last-update" datetime="">Carregando...</time>
+            </div>
+          </div>
+
+          <div id="overall-status" class="overall-status is-loading" role="status" aria-live="polite">
+            <span class="overall-icon" aria-hidden="true">…</span>
+            <div>
+              <strong>Verificando o ambiente</strong>
+              <p>Consultando o estado mais recente dos serviços.</p>
+            </div>
+          </div>
+
+          <div class="metrics" aria-label="Resumo do ambiente">
+            <article class="metric">
+              <span class="metric-label">Serviços monitorados</span>
+              <strong id="metric-total">—</strong>
+            </article>
+            <article class="metric">
+              <span class="metric-label">Operacionais</span>
+              <strong id="metric-operational">—</strong>
+            </article>
+            <article class="metric">
+              <span class="metric-label">Disponibilidade média</span>
+              <strong id="metric-availability">—</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="services-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Monitoramento</p>
+            <h2 id="services-title">Serviços</h2>
+          </div>
+          <p>Estado atual dos componentes essenciais da plataforma.</p>
+        </div>
+
+        <div id="services-loading" class="loading-state" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          Carregando serviços...
+        </div>
+        <div id="services-error" class="error-state" role="alert" hidden>
+          <span aria-hidden="true">!</span>
+          <div>
+            <strong>Não foi possível carregar os serviços</strong>
+            <p>Tente atualizar a página em alguns instantes.</p>
+          </div>
+        </div>
+        <div id="services-grid" class="services-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Linha do tempo</p>
+              <h2 id="incidents-title">Histórico de incidentes</h2>
+            </div>
+            <p>Ocorrências recentes e ações tomadas pela equipe.</p>
+          </div>
+          <div id="incidents-list" class="incidents-list" aria-labelledby="incidents-title"></div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="legend-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Referência</p>
+            <h2 id="legend-title">Legenda dos estados</h2>
+          </div>
+        </div>
+        <ul class="legend-list">
+          <li><span class="status-symbol operational" aria-hidden="true">✓</span><strong>Operacional</strong><span>Funcionando normalmente</span></li>
+          <li><span class="status-symbol degraded" aria-hidden="true">!</span><strong>Desempenho degradado</strong><span>Operando com lentidão</span></li>
+          <li><span class="status-symbol maintenance" aria-hidden="true">◆</span><strong>Em manutenção</strong><span>Intervenção programada</span></li>
+          <li><span class="status-symbol offline" aria-hidden="true">×</span><strong>Indisponível</strong><span>Serviço fora do ar</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p><strong>Nimbus Tecnologia</strong> — confiabilidade que acompanha seu negócio.</p>
+        <p>Projeto criado para uma aula prática de DevOps.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "updatedAt": "2026-07-23T14:30:00-03:00",
+  "services": [
+    {
+      "id": "portal-cliente",
+      "name": "Portal do Cliente",
+      "description": "Acesso dos clientes aos produtos, contratos e chamados.",
+      "status": "operational",
+      "availability": 99.99
+    },
+    {
+      "id": "api-pagamentos",
+      "name": "API de Pagamentos",
+      "description": "Processamento seguro de cobranças e confirmações financeiras.",
+      "status": "operational",
+      "availability": 99.95
+    },
+    {
+      "id": "autenticacao",
+      "name": "Serviço de Autenticação",
+      "description": "Login, controle de sessões e autorização de acesso.",
+      "status": "degraded",
+      "availability": 98.72
+    },
+    {
+      "id": "banco-dados",
+      "name": "Banco de Dados",
+      "description": "Persistência e consulta dos dados essenciais da plataforma.",
+      "status": "operational",
+      "availability": 99.98
+    },
+    {
+      "id": "notificacoes",
+      "name": "Central de Notificações",
+      "description": "Envio de alertas transacionais por e-mail e mensagens.",
+      "status": "maintenance",
+      "availability": 97.8
+    }
+  ],
+  "incidents": [
+    {
+      "title": "Lentidão no Serviço de Autenticação",
+      "date": "2026-07-21T16:20:00-03:00",
+      "description": "Uma alta no tempo de resposta afetou parte dos logins. A capacidade foi ampliada e o serviço estabilizado."
+    },
+    {
+      "title": "Falha intermitente na API de Pagamentos",
+      "date": "2026-07-14T10:45:00-03:00",
+      "description": "Algumas confirmações sofreram atraso durante 18 minutos. As transações foram reprocessadas com sucesso."
+    },
+    {
+      "title": "Manutenção preventiva no Banco de Dados",
+      "date": "2026-07-06T02:00:00-03:00",
+      "description": "A atualização planejada foi concluída dentro da janela prevista, sem perda de dados."
+    }
+  ]
+}

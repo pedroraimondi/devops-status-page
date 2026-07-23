@@ -1,0 +1,7 @@
+# Saída gerada pelo comando de build
+dist/
+
+# Arquivos temporários comuns do sistema e do editor
+.DS_Store
+Thumbs.db
+*.log

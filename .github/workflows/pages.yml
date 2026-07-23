@@ -1,0 +1,78 @@
+name: Validar e publicar a página de status
+
+# O workflow valida pull requests e publica apenas mudanças já integradas à main.
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Evita dois deploys simultâneos. Uma execução mais nova substitui a anterior.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+# Permissão mínima compartilhada por todos os jobs.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Testar e gerar o site
+    runs-on: ubuntu-latest
+
+    steps:
+      # O checkout baixa o conteúdo do repositório para o runner.
+      - name: Baixar o código
+        uses: actions/checkout@v6
+
+      # O projeto não tem dependências, mas usa o Node.js para testes e build.
+      - name: Configurar o Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Executar os testes automatizados
+        run: npm test
+
+      - name: Gerar os arquivos de publicação
+        run: npm run build
+
+      - name: Confirmar o resultado do build
+        run: test -f dist/index.html
+
+      # Pull requests param aqui: eles validam o projeto, mas não preparam deploy.
+      - name: Configurar o GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      # O artefato leva a pasta dist deste job para o job de publicação.
+      - name: Enviar o artefato do site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    name: Publicar no GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+
+    # O ambiente registra a URL produzida pelo step de deploy.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Publicar o artefato no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
