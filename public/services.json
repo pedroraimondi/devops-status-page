@@ -19,7 +19,7 @@
       "id": "autenticacao",
       "name": "Serviço de Autenticação",
       "description": "Login, controle de sessões e autorização de acesso.",
-      "status": "operational",
+      "status": "degraded",
       "availability": 98.72
     },
     {
